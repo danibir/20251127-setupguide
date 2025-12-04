@@ -1,0 +1,14 @@
+.flexrow{
+    display: flex;
+    flex-direction: row;
+}
+.flexcol{
+    display: flex;
+    flex-direction: column;
+}
+.flexpart{
+    width: 100%;
+}
+.flexpartmini{
+    width: 50%;
+}

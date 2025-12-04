@@ -1,0 +1,48 @@
+body
+{
+    background-color: rgb(80, 54, 111);
+}
+
+.bigsegment
+{
+    background-color:lavender;
+    border-radius: 2px;
+    padding: 10px;
+}
+.smallsegment
+{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+    border-radius: 2px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.supertitle
+{
+    font-size: xx-large;
+}
+.title
+{
+    font-size: x-large;
+}
+.paragr
+{
+    font-size: medium;
+}
+
+.terminalbox
+{
+    background-color: black;
+    color: lime;
+    border-radius: 8px;
+    padding: 9px;
+    width: 90%;
+}
+
+.img {
+    width: 70%;
+    border-radius: 30px;
+}

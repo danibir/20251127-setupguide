@@ -3,6 +3,8 @@ const morgan = require('morgan')
 
 const app = express()
 
+const rou_default = require('./router/rou-default')
+
 app.set('view engine', 'ejs')
 
 app.use(express.static('public'))
@@ -11,7 +13,4 @@ app.use(morgan('dev'))
 
 app.listen(3000)
 
-app.get('/', (req, res) => {
-    res.write('connected2')
-    res.end()
-})
+app.use(rou_default)
