@@ -1,31 +1,284 @@
 <%- include('./partials/header') %>
 
 <body>
+
+
+    <div class="smallsegment list">
+        <ul>
+            <a href="#vmcre"><h4>Lag VM-en</h4></a>
+            <li><a href="#vmcre1">Step 1: Lag VM</a></li>
+            <li><a href="#vmcre2">Step 2: General</a></li>
+            <li><a href="#vmcre3">Step 3: OS</a></li>
+            <li><a href="#vmcre4">Step 4: CPU</a></li>
+            <li><a href="#vmcre5">Step 5: Memory</a></li>
+            <li><a href="#vmcre6">Step 6: Confirm</a></li>
+            <a href="#vmcon"><h4>Configurer VM-en</h4></a>
+            <li><a href="#vmcon1">Step 1: Installer Ubuntu</a></li>
+            <li><a href="#vmcon2">Step 2: Språk</a></li>
+            <li><a href="#vmcon3">Step 3: Keyboard configuration</a></li>
+            <li><a href="#vmcon4">Step 4: Network configuration</a></li>
+            <li><a href="#vmcon5">Step 5: Storage configuration</a></li>
+            <li><a href="#vmcon6">Step 6: Profile configuration</a></li>
+            <li><a href="#vmcon7">Step 7: Installing system</a></li>
+            <a href="#node"><h4>Sette Node.js server</h4></a>
+            <li><a href="#node0">Step 0: Forbredelser</a></li>
+            <li><a href="#node1">Step 1: Last opp prosjektet på github</a></li>
+            <li><a href="#node2">Step 2: Klon repository på VM-en</a></li>
+            <li><a href="#node3">Step 3: Installer Node.Js og npm</a></li>
+            <li><a href="#node4">Step 4: Installer avhengigheter</a></li>
+            <li><a href="#node5">Step 5: Start applikasjonen</a></li>
+            <li><a href="#node6">Step 6: Videre synkronisering</a></li>
+        </ul>
+        <br>
+    </div>
+
     <section class="flexrow">
         <section class="flexpartmini"></section>
         <section class="flexpart flexcol bigsegment">
             <div class="smallsegment">
                 <h1 class="supertitle">Sette opp node.js server på virtual machine (ubuntu) server</h1>
+                <img src="/img/ubuntu-z6rtxbp6rijb53hx.jpg" alt="" class="img">
+                <p class="paragr">
+                    En virtuell maskin (VM) er innenfor informatikken betegnelsen på en emulering av et gitt operativsystem. Virtuelle maskiner opererer på datamaskinarkitekturen til reelle eller hypotetiske datamaskiner, og deres implementasjon kan involvere spesialisert maskinvare, programvare eller begge deler. Den kan også hoste websider via node.js. Denne tredels guiden skal vise deg hvordan man setter opp en VM, hvordan man konfigurerer den, og tilslutt hoste node.js på VM-en.
+                </p>
+                <p class="paragr">
+                    Denne guiden forventer at du har tilgang til promoxen til skolen din, og en node.js server klar til å bli hostet. Hvis du mangler en av disse to tingene, må du først få de før du fortsetter på denne guiden.
+                </p>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            
+            <div class="smallsegment" id="vmcre">
+                <h2 class="title">
+                    Lag VM-en
+                </h1>
+                <p class="paragr">
+                    Første steg er å opprette en virtuell maskin i Proxmox. Dette gir deg et isolert miljø hvor du kan installere Ubuntu og senere kjøre Node.js-applikasjonen din. Følg stegene nøye for å sikre at VM-en får riktig konfigurasjon.
+                </p>
             </div>
 
             <br>
 
-            <div class="smallsegment">
-                <img src="/img/ubuntu-z6rtxbp6rijb53hx.jpg" alt="" class="img">
+            <div class="smallsegment" id="vmcre1">
+                <h2 class="title">
+                    Step 1: Lag VM
+                </h1>
+                <p class="paragr">
+                    På proxmox, finn knappen i top-høyre som heter "Create VM", og trykk den.
+                </p>
+                <img src="/img/vmcreate1.png" alt="" class="img">
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcre2">
+                <h2 class="title">
+                    Step 2: General
+                </h1>
+                <p class="paragr">
+                    Fyll inn informasjonen på siden. "Node:" skal være fylt allerede, og mest sansynlig har du bare tilgang til 1 resource pool. Innenfor "Navn:" tekstboksen, gi Vm-en din ett navn som passer bruken dens, som foreks. "nodeserverguide". Tilslutt klikk "Next" for å gå til neste side.
+                </p>
+                <img src="/img/vmcreate2.png" alt="" class="img">
+                <p class="paragr">
+                    Du kan også sjekke boksen for "Start at boot:" i "Advanced", men det er ikke nødvendig.
+                </p>
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcre3">
+                <h2 class="title">
+                    Step 3: OS
+                </h1>
+                <p class="paragr">
+                    Velg ubuntu ISO-en i "ISO image:" feltet.
+                </p>
+                <img src="/img/vmcreate3.png" alt="" class="img">
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcre4">
+                <h2 class="title">
+                    Step 4: CPU
+                </h1>
+                <p class="paragr">
+                    Dette kan være basert på hvor sterk du vil ha VM-en, men 8 er i flest tilfeller nok.
+                </p>
+                <img src="/img/vmcreate4.png" alt="" class="img">
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcre5">
+                <h2 class="title">
+                    Step 5: Memory
+                </h1>
+                <p class="paragr">
+                    Skriv 8192 innenfor "Memory (MiB):" feltet.
+                </p>
+                <img src="/img/vmcreate5.png" alt="" class="img">
+            </div>
+            
+            <br>
+
+            <div class="smallsegment" id="vmcre6">
+                <h2 class="title">
+                    Step 6: Confirm
+                </h1>
+                <p class="paragr">
+                    Sjekk "Start after created" feltet i "Advanced". Klikk "Finish" når du er sikker du har klart de tidligere stegene.
+                </p>
+                <img src="/img/vmcreate6.png" alt="" class="img">
+            </div>
+
+            <br>
+            <br>
+            
+            <div class="smallsegment" id="vmcon">
+                <h2 class="title">
+                    Configurering av VM
+                </h1>
+                <p class="paragr">
+                    Når VM-en er opprettet, må du konfigurere operativsystemet. Dette innebærer å installere Ubuntu, sette språk og tastaturoppsett, konfigurere nettverk og lagring, samt opprette en brukerprofil. Disse stegene sikrer at serveren din er klar til å brukes.
+                </p>
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcon1">
+                <h2 class="title">
+                    Step 1: Installer Ubuntu
+                </h1>
+                <p class="paragr">
+                    Klikk på "Console" feltet, og installer Ubuntu server
+                </p>
+                <img src="/img/vmconfig1.png" alt="" class="img">
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcon2">
+                <h2 class="title">
+                    Step 2: Språk
+                </h1>
+                <p class="paragr">
+                    La språk feltet være på engelsk. Velger du noe annet kan det bli mye vanskeligere å feilkontrollere, siden mesteparten av hjelpemiddler er på engelsk
+                </p>
+                <img src="/img/vmconfig2.png" alt="" class="img">
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcon3">
+                <h2 class="title">
+                    Step 3: Keyboard configuration
+                </h1>
+                <p class="paragr">
+                    Finn tastaturet du bruker i feltet. Layout er "Norwegian", og Variant er basert på hva tastatur du har (foreks. hvis du har windows tastatur skal du velge "Norwegian - Norwegian (Windows)")
+                </p>
+                <img src="/img/vmconfig3.png" alt="" class="img">
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcon4">
+                <h2 class="title">
+                    Step 4: Network configuration
+                </h1>
+                <p class="paragr">
+                    Åpne "ens18" feltet, og velg "Edit IPv4". Velg Manual.
+                </p>
+                <img src="/img/vmconfig4.png" alt="" class="img">
+                <p class="paragr">
+                    Legg inn "Subnet", "Adress", "Gateway", og "Name servers"(dns) ifølge hva netverk du er på. "Search domains" er ikke nødvendig.
+                </p>
+                <p class="paragr">
+                    Hvis mirror installasjonen feiler, er det sikkert fordi du har gjort noe feil med network config-en. Pass på at du har riktig ip adresse og en fungerene dns.
+                </p>
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcon5">
+                <h2 class="title">
+                    Step 5: Storage configuration
+                </h1>
+                <p class="paragr">
+                    Hvis alt fungerer og mirror installasjonen gikk gjennom, kan du gå videre gjennom "Done" og "Continue".
+                </p>
+                <img src="/img/vmconfig5.png" alt="" class="img">
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcon6">
+                <h2 class="title">
+                    Profile 6: Profile configuration
+                </h1>
+                <p class="paragr">
+                    Skriv profil informasjon. "Username" er hva du kommer til å bruke for å logge inn med ssh.
+                </p>
+                <img src="/img/vmconfig6.png" alt="" class="img">
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcon7">
+                <h2 class="title">
+                    Step 7: Installing system
+                </h1>
+                <p class="paragr">
+                    Pass på å sjekke OpenSSH feltet.
+                </p>
+                <img src="/img/vmconfig7.png" alt="" class="img">
+            </div>
+
+            <br>
+
+            <div class="smallsegment" id="vmcon8">
+                <h2 class="title">
+                    Step 8: Installing system
+                </h1>
+                <p class="paragr">
+                    Denne siden må sitte og tenke for en god 5 min. Når den er klar, kan du gå videre.
+                </p>
+                <img src="/img/vmconfig8.png" alt="" class="img">
+                <p class="paragr">
+                    Dette rebooter VM-en. Klikk enter når den spør om det.
+                </p>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="smallsegment" id="node">
+                <h2 class="title">
+                    Setting up Node.js server
+                </h1>
+                <p class="paragr">
+                    Etter at Ubuntu er installert og konfigurert, kan du sette opp Node.js-serveren. Dette inkluderer å laste opp prosjektet ditt til GitHub, klone det til VM-en, installere Node.js og npm, og starte applikasjonen. Til slutt kan du holde prosjektet oppdatert ved å synkronisere med GitHub.
+                </p>
+                <img src="/img/nodejs-logo.png" alt="" class="img">
+            </div>
+            
+            <br>
+
+            <div class="smallsegment" id="node0">
                 <h2 class="title">
                     Step 0: Forbredelser
                 </h1>
                 <p class="paragr">
-                    Ubuntu VM klar: Sørg for at du har en fungerende Ubuntu Virtual Machine (enten i skyen som AWS, Azure, GCP eller lokalt via VirtualBox/VMware).
-                </p>
-                <p class="paragr">
-                    Node.js-applikasjon klar: Du bør ha en enkel Node.js-app (for eksempel en app.js som starter en server med express).
+                    Du bør ha en enkel Node.js-app (for eksempel en app.js som starter en server med express).
                 </p>
             </div>
 
             <br>
             
-            <div class="smallsegment">
+            <div class="smallsegment" id="node1">
                 <h2 class="title">
                     Step 1: Last opp prosjektet på github
                 </h2>
@@ -55,7 +308,7 @@
             
             <br>
 
-            <div class="smallsegment">
+            <div class="smallsegment"  id="node2">
                 <h2 class="title">Step 2: Klon repository på VM-en</h2>
                 <p class="paragr">Logg inn på VM-en via SSH:</p>
                 <section class="terminalbox">
@@ -77,18 +330,17 @@
 
             <br>
 
-            <div class="smallsegment">
+            <div class="smallsegment"  id="node3">
                 <h2 class="title">Step 3: Installer Node.Js og npm</h2>
-                <img src="/img/nodejs-logo.png" alt="" class="img">
                 <p class="paragr">Installer node.js og npm</p>
                 <section class="terminalbox">
-                    sudo apt i nodejs npm -y
+                    sudo apt install nodejs npm -y
                 </section>
             </div>
 
             <br>
 
-            <div class="smallsegment">
+            <div class="smallsegment"  id="node4">
                 <h2 class="title">Step 4: Installer avhengigheter (hvis du har package.json)</h2>
                 <section class="terminalbox">
                     npm i
@@ -98,7 +350,7 @@
 
             <br>
             
-            <div class="smallsegment">
+            <div class="smallsegment"  id="node5">
                 <h2 class="title">Step 5: Start applikasjonen</h2>
                 <section class="terminalbox">
                     node app.js
@@ -108,7 +360,7 @@
             
             <br>
 
-            <div class="smallsegment">
+            <div class="smallsegment"  id="node6">
                 <h2 class="title">
                     Step 6: Videre synkronisering
                 </h1>

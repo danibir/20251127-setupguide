@@ -31,6 +31,11 @@ body
 .paragr
 {
     font-size: medium;
+    max-width: 65%;
+    border-color: gainsboro;
+    border-style: double;
+    border-radius: 3px;
+    padding: 5px;
 }
 
 .terminalbox
@@ -43,6 +48,27 @@ body
 }
 
 .img {
-    width: 70%;
+    width: 85%;
     border-radius: 30px;
+}
+
+.list {
+    width: fit-content;
+    position: fixed;
+    top: 15;
+    left: 15px;
+    display: flex;
+    justify-content:baseline;
+    align-items:baseline;
+    border-radius: 3px;
+    padding: 1px;
+    background-color:lavender;
+    padding-right: 30px;
+    & a {
+        color: black;
+        text-decoration: none;
+        &:hover {
+            color: blue;
+        }
+    }
 }
